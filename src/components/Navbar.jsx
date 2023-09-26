@@ -3,6 +3,7 @@ import "./NavbarStyle.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HashLink } from "react-router-hash-link";
+import {signInWithGoogle} from "../Firebase";
 const Navbar = (props) => {
 	const userData = useSelector((state) => state.user);
 	const openNav = () => {
@@ -84,13 +85,20 @@ const Navbar = (props) => {
 						</NavLink>
 					) : (
 						<>
-						<NavLink
+						<div
+							onClick={signInWithGoogle}
+							className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
+							to="/login"
+						>
+							Login
+						</div>
+						{/* <NavLink
 							onClick={openNav}
 							className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
 							to="/login"
 						>
 							Login
-						</NavLink>
+						</NavLink> */}
 						<NavLink
 							onClick={openNav}
 							className=" py-1.5 px-7 login-button text-white bg-blue hover:scale-105 ease-in-out duration-300 font-medium rounded"
